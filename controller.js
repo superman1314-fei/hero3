@@ -1,5 +1,5 @@
 let heroModel = require('./model')
-
+const moment = require('moment')
 
 // 业务处理
 module.exports={
@@ -20,6 +20,7 @@ module.exports={
     },
     //编辑英雄
     showEditPage(req,res){
+
         res.render('edit',{})
     },
     // 显示英雄详情页面
@@ -70,7 +71,41 @@ deieteOneHero(req,res){
             msg:'删除失败'
         })
     })
-}
+},
+//获取编辑详情
+showOneHeroInof(req,res){
+    let {id}=req.query
+    heroModel.getOneHeroInfo(id,(err,result)=>{
+        if(err) return res.json({
+            code:201,
+            msg:'获取失败'
+        })
+        res.json({
+            code:200,
+            msg:'获取成功',
+            data:result
+        })
+    })
+},
+//修改英雄
+updateHeroInfo(req,res){
+    let hero = req.body
+    // console.log(hero);
+   hero.ctime=moment().format('YYYY-MM-DD HH:mm:ss')
+   heroModel.updateHeroInfo(hero,result=>{
 
+    //    console.log(hero);
+       
+       if(result) return res.json({
+           code:200,
+           msg:'更新成功'
+       })
+       res.json({
+           code:201,
+           msg:'更新失败'
+       })
+   })
+    
+}
 
 }

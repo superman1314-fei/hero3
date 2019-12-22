@@ -1,8 +1,10 @@
 // 引入express
 const express = require("express");
+
+let hero = require("./controller");
 // 创建路由对象
 const router = express.Router();
-let hero = require("./controller");
+
 router.get("/", (req, res) => {
     hero.showIndexPage(req, res);
   })
@@ -26,6 +28,9 @@ router.get("/", (req, res) => {
   })
   .get('/showOneHeroInof',(req,res)=>{
     hero.showOneHeroInof(req,res)
+  })
+  .post('/updateHeroInfo',(req,res)=>{
+    hero.updateHeroInfo(req,res)
   })
   
   ;

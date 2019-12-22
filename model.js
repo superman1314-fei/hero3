@@ -40,6 +40,17 @@ module.exports={
             if(err) return   callback(false)
             callback(true)
         })
+    },
+    // 更新英雄数据
+    updateHeroInfo(hero,callback){
+        let {id}=hero
+        delete hero.id
+        let sql ='update users set ? where id=?'
+        conn.query(sql,[hero,id],(err,result)=>{
+            if(err) return callback(false)
+
+            callback(true)
+        })
     }
 }
 

@@ -53,14 +53,36 @@
         url:'/showOneHeroInof',
         data:{
           id:location.search.substring(4)
+          // id: location.search.split('=')[1]
           
         },
         success:function(res){
+          // console.log(res);
+         if(res.code==200){
+           for(var key in res.data[0]){
+             $('input.'+key).val(res.data[0][key])
+           }
+           res.data[0].gender=='男'? $('input.man').prop('checked',true): $('input.woman').prop("checked",true)
+            $('div.time').text(res.data[0].ctime)
+          }
           
         }
       })
 
+      $('.btn-success').on('click',function(e){
+        e.preventDefault()
+        $.post({
+          url:'/updateHeroInfo',
+          data:$('#form').serialize(),
+          success:function(res){
+            // console.log(res);
 
+
+            
+            window.location.href = '/'
+          }
+        })
+      })
 
 
     })
