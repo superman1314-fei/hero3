@@ -55,6 +55,21 @@ getOneHeroInfo(req,res){
         })
     })
     
+},//删除数据
+deieteOneHero(req,res){
+    let {id} = req.query
+// console.log(req.query);
+
+    heroModel.deieteOneHero(id,result=>{
+        if(result) return res.json({
+            code:200,
+            msg:'删除成功'
+        })
+        res.json({
+            code:201,
+            msg:'删除失败'
+        })
+    })
 }
 
 

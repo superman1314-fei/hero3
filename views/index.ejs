@@ -29,7 +29,7 @@
     <td>{{$value.address}}</td>
     <td>
       <a href="./info?id={{$value.id}}">查看</a>
-      <a href="./edit.html?id={{$value.id}}">编辑</a>
+      <a href="./edit?id={{$value.id}}">编辑</a>
       <a href="javascript:void(0)" data-id='{{$value.id}}' class="btn-del">删除</a>
     </td>
   </tr>
@@ -37,15 +37,34 @@
 </script>
 <script>
 $(function(){
-  
+//主页数据渲染
+load()
+function load() {
   $.get({
     url:'/getAllheroInfo',
     success:function(res){
       $('tbody').html(template('heroList',res))
     }
   })
+}
 
-
+//删除英雄数据
+$('tbody').on('click','.btn-del',function(){
+      if(confirm('你确定要删除吗')){
+        $.get({
+          url:'deieteOneHero',
+          data:{
+            id:$(this).data('id')
+          },
+          success:function(res){
+           if(res.code===200){
+            load()
+           }
+          }
+        })
+      }
+      
+})
 
 })
 

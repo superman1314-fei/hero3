@@ -21,7 +21,12 @@ router.get("/", (req, res) => {
   .get('/getOneHero',(req,res)=>{
     hero.getOneHeroInfo(req,res)
   })
-  
+  .get('/deieteOneHero',(req,res)=>{
+    hero.deieteOneHero(req,res)
+  })
+  .get('/showOneHeroInof',(req,res)=>{
+    hero.showOneHeroInof(req,res)
+  })
   
   ;
 

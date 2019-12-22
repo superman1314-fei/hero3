@@ -25,12 +25,20 @@ module.exports={
             
             callback(null,result)
         })
-    },
+    },//查看数据
     getOneHeroInfo(id,callback){
         let sql = 'select * from users where id=?'
         conn.query(sql,[id],(err,result)=>{
             if(err) return callback(err)
             callback(null,result)
+        })
+    },//删除数据
+    deieteOneHero(id,callback){
+        let sql='delete from users where id=?'
+        conn.query(sql,[id],(err,result)=>{
+         
+            if(err) return   callback(false)
+            callback(true)
         })
     }
 }
