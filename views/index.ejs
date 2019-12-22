@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hero - Admin</title>
-    <link
-      rel="stylesheet"
-      href="/node_modules/bootstrap/dist/css/bootstrap.css"
-    />
-  </head>
-
-  <body>
-    <header>
-      <div class="page-header container">
-        <h1>亡者农药 <small>英雄管理器</small></h1>
-      </div>
-    </header>
+<%- include('./layout/header.ejs')%>
     <div class="container hero-list">
       <a class="btn btn-success pull-right" href="./add.html">添加英雄</a>
       <table class="table table-hover">
@@ -32,9 +16,8 @@
         </tbody>
       </table>
     </div>
-    <script src="/node_modules/jquery/dist/jquery.js"></script>
-  </body>
-</html>
+    <%- include('./layout/footer.ejs')%>
+
 <script type='text/html' id='heroList'>
   {{each data}}
   <tr>
@@ -45,10 +28,27 @@
     <td>{{$value.date}}</td>
     <td>{{$value.address}}</td>
     <td>
-      <a href="./info.html?id={{$value.id}}">查看</a>
+      <a href="./info?id={{$value.id}}">查看</a>
       <a href="./edit.html?id={{$value.id}}">编辑</a>
       <a href="javascript:void(0)" data-id='{{$value.id}}' class="btn-del">删除</a>
     </td>
   </tr>
   {{/each}}
+</script>
+<script>
+$(function(){
+  
+  $.get({
+    url:'/getAllheroInfo',
+    success:function(res){
+      $('tbody').html(template('heroList',res))
+    }
+  })
+
+
+
+})
+
+
+
 </script>

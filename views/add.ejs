@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Hero - Admin</title>
-  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-</head>
-
-<body>
-  <header>
-    <div class="page-header container">
-      <h1><a href="/">亡者农药</a> <small>英雄管理器</small></h1>
-    </div>
-  </header>
+<%- include('./layout/header.ejs')%>
   <div class="container hero-list">
     <form id="form">
       <div class="form-group">
@@ -41,7 +27,5 @@
       <button type="submit" class="btn btn-success">点击保存</button>
     </form>
   </div>
-  <script src="/node_modules/jquery/dist/jquery.js"></script>
-</body>
-</html>
+  <%- include('./layout/footer.ejs')%>
 
