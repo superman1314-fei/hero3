@@ -51,6 +51,14 @@ module.exports={
 
             callback(true)
         })
+    },
+    // 添加数据
+    addHerOInfo(hero,callback){
+        let sql='insert into users set ?'
+        conn.query(sql,[hero],(err,result)=>{
+            if(err) return callback(false)
+            callback(true)
+        })
     }
 }
 

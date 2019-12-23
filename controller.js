@@ -106,6 +106,21 @@ updateHeroInfo(req,res){
        })
    })
     
+},
+//添加数据
+addHerOInfo(req,res){
+    let hero=req.body
+   hero.ctime=moment().format('YYYY-MM-DD HH:mm:ss')
+    
+    heroModel.addHerOInfo(hero,result=>{
+        if(result) return res.json({
+            code:200,
+            msg:'添加成功'
+        })
+        res.json({
+            code:201,
+            msg:'添加失败'
+        })
+    })
 }
-
 }

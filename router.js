@@ -32,7 +32,9 @@ router.get("/", (req, res) => {
   .post('/updateHeroInfo',(req,res)=>{
     hero.updateHeroInfo(req,res)
   })
-  
+  .post('/addHerOInfo',(req,res)=>{
+    hero.addHerOInfo(req,res)
+  })
   ;
 
 // 暴露路由

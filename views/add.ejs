@@ -29,3 +29,25 @@
   </div>
   <%- include('./layout/footer.ejs')%>
 
+<script>
+$(function(){
+ $('.btn-success').on('click',function(e){
+  e.preventDefault()
+   let hero=$('#form').serialize()
+  $.post({
+    url:'/addHerOInfo',
+    data:hero,
+    success:function(res){
+      if(res.code  == 200) {
+              window.location.href = '/'
+            }
+    }
+
+  })
+ })
+
+
+})
+
+
+</script>
